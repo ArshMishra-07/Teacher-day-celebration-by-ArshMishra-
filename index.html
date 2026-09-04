@@ -19,33 +19,65 @@
     <!-- PARTICLE BACKGROUND -->
     <canvas id="particles"></canvas>
 
-    <!-- MUSIC -->
-    <audio id="bgMusic" loop>
-        <source src="music.mp3" type="audio/mpeg">
-    </audio>
-    <div class="music-control">
-    <button class="music-btn" id="musicBtn" aria-label="Open Music">
-        🎵
-    </button>
+/* ---------- MUSIC LINK ---------- */
 
-    <div class="music-menu" id="musicMenu">
-        <div class="music-title">🎶 Choose Your Song</div>
+const musicBtn =
+    document.getElementById("musicBtn");
 
-        <input
-            type="url"
-            id="songLink"
-            placeholder="Paste Spotify / YouTube link..."
-        >
+const musicMenu =
+    document.getElementById("musicMenu");
 
-        <button id="openSong">
-            🎵 Open Song
-        </button>
+const songLink =
+    document.getElementById("songLink");
 
-        <p>
-            Paste any song link and open it instantly.
-        </p>
-    </div>
-    </div>
+const openSong =
+    document.getElementById("openSong");
+
+
+musicBtn.addEventListener("click", () => {
+
+    musicMenu.classList.toggle("show");
+
+});
+
+
+openSong.addEventListener("click", () => {
+
+    const link =
+        songLink.value.trim();
+
+    if (!link) {
+
+        alert("Please paste a song link 🎵");
+
+        return;
+
+    }
+
+    try {
+
+        const url = new URL(link);
+
+        if (
+            url.protocol !== "https:" &&
+            url.protocol !== "http:"
+        ) {
+            throw new Error();
+        }
+
+        window.open(
+            url.href,
+            "_blank",
+            "noopener,noreferrer"
+        );
+
+    } catch {
+
+        alert("Please enter a valid song link 🔗");
+
+    }
+
+});
 
     <!-- OPENING SCREEN -->
     <div id="introScreen" class="intro-screen">
