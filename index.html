@@ -19,30 +19,14 @@
     <!-- PARTICLE BACKGROUND -->
     <canvas id="particles"></canvas>
 
-/* 
-    <div class="music-control">
-    <button class="music-btn" id="musicBtn" type="button">
+    <!-- MUSIC -->
+    <audio id="bgMusic" loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+
+    <button class="music-btn" id="musicBtn" aria-label="Music">
         🎵
     </button>
-
-    <div class="music-menu" id="musicMenu">
-
-        <div class="music-title">
-            🎶 Choose Your Song
-        </div>
-
-        <input
-            type="url"
-            id="songLink"
-            placeholder="Paste Spotify / YouTube link"
-        >
-
-        <button id="openSong" type="button">
-            🎵 Open Song
-        </button>
-
-    </div>
-    </div>
 
     <!-- OPENING SCREEN -->
     <div id="introScreen" class="intro-screen">
@@ -541,4 +525,4 @@
     <script src="script.js"></script>
 
 </body>
-      </html>
+    </html>
