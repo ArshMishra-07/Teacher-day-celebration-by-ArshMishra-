@@ -1,1 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>Happy Teachers' Day ❤️</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- PARTICLE BACKGROUND -->
+    <canvas id="particles"></canvas>
+
+    <!-- MUSIC -->
+    <audio id="bgMusic" loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+
+    <button class="music-btn" id="musicBtn" aria-label="Music">
+        🎵
+    </button>
+
+    <!-- OPENING SCREEN -->
+    <div id="introScreen" class="intro-screen">
+
+        <div class="intro-glow"></div>
+
+        <div class="intro-content">
+
+            <div class="school-icon">🎓</div>
+
+            <p class="small-title">A LITTLE TRIBUTE TO</p>
+
+            <h1>
+                The Ones Who
+                <span>Shape Our Future</span>
+            </h1>
+
+            <p class="intro-text">
+                Some people teach lessons.
+                Great teachers change lives.
+            </p>
+
+            <button class="main-btn" id="enterBtn">
+                ENTER THE CELEBRATION
+                <span>→</span>
+            </button>
+
+        </div>
+    </div>
+
+
+    <!-- MAIN WEBSITE -->
+    <main id="mainContent" class="hidden">
+
+        <!-- NAVBAR -->
+        <nav class="navbar">
+
+            <div class="logo">
+                <span>✦</span>
+                Teachers' Day
+            </div>
+
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#tribute">Tribute</a>
+                <a href="#memories">Memories</a>
+                <a href="#surprise">Surprise</a>
+            </div>
+
+        </nav>
+
+
+        <!-- HERO -->
+        <section id="home" class="hero">
+
+            <div class="hero-orb orb-one"></div>
+            <div class="hero-orb orb-two"></div>
+
+            <div class="hero-content">
+
+                <div class="eyebrow">
+                    ✨ A SPECIAL CELEBRATION ✨
+                </div>
+
+                <h2>
+                    Happy
+                    <span>Teachers' Day</span>
+                </h2>
+
+                <p>
+                    To every teacher who turns curiosity into knowledge,
+                    mistakes into lessons, and dreams into possibilities.
+                </p>
+
+                <div class="hero-buttons">
+
+                    <a href="#tribute" class="primary-btn">
+                        Explore Tribute
+                    </a>
+
+                    <button class="secondary-btn" id="heroSurprise">
+                        🎁 Open Surprise
+                    </button>
+
+                </div>
+
+            </div>
+
+            <div class="scroll-down">
+                <span></span>
+                Scroll to explore
+            </div>
+
+        </section>
+
+
+        <!-- COUNTDOWN -->
+        <section class="countdown-section">
+
+            <div class="section-heading">
+
+                <span>THE SPECIAL DAY</span>
+
+                <h3>
+                    Celebration
+                    <em>Countdown</em>
+                </h3>
+
+                <p>
+                    Every second is a reminder to appreciate the people
+                    who make learning beautiful.
+                </p>
+
+            </div>
+
+            <div class="countdown">
+
+                <div class="time-card">
+                    <strong id="days">00</strong>
+                    <span>Days</span>
+                </div>
+
+                <div class="time-card">
+                    <strong id="hours">00</strong>
+                    <span>Hours</span>
+                </div>
+
+                <div class="time-card">
+                    <strong id="minutes">00</strong>
+                    <span>Minutes</span>
+                </div>
+
+                <div class="time-card">
+                    <strong id="seconds">00</strong>
+                    <span>Seconds</span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- TRIBUTE -->
+        <section id="tribute" class="tribute-section">
+
+            <div class="section-heading">
+
+                <span>MORE THAN A TEACHER</span>
+
+                <h3>
+                    Why Teachers
+                    <em>Are Special</em>
+                </h3>
+
+            </div>
+
+
+            <div class="tribute-grid">
+
+                <article class="tribute-card">
+
+                    <div class="card-icon">🧭</div>
+
+                    <h4>The Guide</h4>
+
+                    <p>
+                        When we don't know which way to go,
+                        teachers help us find our direction.
+                    </p>
+
+                    <div class="card-number">01</div>
+
+                </article>
+
+
+                <article class="tribute-card">
+
+                    <div class="card-icon">💡</div>
+
+                    <h4>The Inspiration</h4>
+
+                    <p>
+                        They make us believe that impossible
+                        things can become possible.
+                    </p>
+
+                    <div class="card-number">02</div>
+
+                </article>
+
+
+                <article class="tribute-card">
+
+                    <div class="card-icon">❤️</div>
+
+                    <h4>The Support</h4>
+
+                    <p>
+                        Behind every confident student is someone
+                        who once believed in them.
+                    </p>
+
+                    <div class="card-number">03</div>
+
+                </article>
+
+
+                <article class="tribute-card">
+
+                    <div class="card-icon">🌱</div>
+
+                    <h4>The Builder</h4>
+
+                    <p>
+                        They don't just teach subjects.
+                        They help build our future.
+                    </p>
+
+                    <div class="card-number">04</div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- QUOTE -->
+        <section class="quote-section">
+
+            <div class="quote-mark">“</div>
+
+            <blockquote>
+                A great teacher doesn't just fill your mind
+                with knowledge — they light a spark inside you
+                that never stops burning.
+            </blockquote>
+
+            <p>— With gratitude, from every student ❤️</p>
+
+        </section>
+
+
+        <!-- MEMORIES -->
+        <section id="memories" class="memories-section">
+
+            <div class="section-heading">
+
+                <span>THINGS WE REMEMBER</span>
+
+                <h3>
+                    Little Moments,
+                    <em>Big Memories</em>
+                </h3>
+
+            </div>
+
+
+            <div class="memory-grid">
+
+                <div class="memory memory-one">
+                    <div>
+                        <span>01</span>
+                        <h4>That One Lesson</h4>
+                        <p>A lesson we'll never forget.</p>
+                    </div>
+                </div>
+
+                <div class="memory memory-two">
+                    <div>
+                        <span>02</span>
+                        <h4>Words of Wisdom</h4>
+                        <p>Simple words that stayed with us.</p>
+                    </div>
+                </div>
+
+                <div class="memory memory-three">
+                    <div>
+                        <span>03</span>
+                        <h4>Never Give Up</h4>
+                        <p>The reminder we needed.</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- MESSAGE -->
+        <section class="message-section">
+
+            <div class="message-card">
+
+                <div class="letter-top">
+                    <span>✉</span>
+                    A LETTER OF GRATITUDE
+                </div>
+
+                <h3>Dear Teacher,</h3>
+
+                <p>
+                    Thank you for being patient when we didn't understand,
+                    encouraging us when we doubted ourselves,
+                    and celebrating our smallest victories.
+                </p>
+
+                <p>
+                    Your classroom may be just one room,
+                    but the lessons you give us travel far beyond its walls.
+                </p>
+
+                <p>
+                    Wherever life takes us,
+                    a part of your teaching will always stay with us.
+                </p>
+
+                <div class="signature">
+                    With endless gratitude,
+                    <strong>Your Students ❤️</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SURPRISE -->
+        <section id="surprise" class="surprise-section">
+
+            <div class="surprise-content">
+
+                <div class="gift-icon">🎁</div>
+
+                <span>A LITTLE SOMETHING SPECIAL</span>
+
+                <h3>
+                    Ready for the
+                    <em>Surprise?</em>
+                </h3>
+
+                <p>
+                    Click the button and let the celebration begin.
+                </p>
+
+                <button class="surprise-btn" id="surpriseBtn">
+                    OPEN YOUR SURPRISE 🎉
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- TEACHER WALL -->
+        <section class="wall-section">
+
+            <div class="section-heading">
+
+                <span>APPRECIATION WALL</span>
+
+                <h3>
+                    Words From
+                    <em>The Heart</em>
+                </h3>
+
+            </div>
+
+
+            <div class="message-form">
+
+                <input
+                    type="text"
+                    id="studentName"
+                    placeholder="Your name"
+                    maxlength="30"
+                >
+
+                <textarea
+                    id="studentMessage"
+                    placeholder="Write something beautiful for your teacher..."
+                    maxlength="180"
+                ></textarea>
+
+                <button id="addMessage">
+                    Add to Appreciation Wall ❤️
+                </button>
+
+            </div>
+
+
+            <div id="messageWall" class="message-wall">
+
+                <div class="wall-note">
+                    <div>❤️</div>
+                    <p>
+                        “Thank you for believing in us.”
+                    </p>
+                    <span>— A grateful student</span>
+                </div>
+
+                <div class="wall-note">
+                    <div>🌸</div>
+                    <p>
+                        “Your lessons will stay with us forever.”
+                    </p>
+                    <span>— With love</span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- FINAL -->
+        <section class="final-section">
+
+            <div class="final-glow"></div>
+
+            <div class="final-content">
+
+                <div class="final-icon">🌟</div>
+
+                <span>ONE LAST THING...</span>
+
+                <h3>
+                    Thank You,
+                    <em>Teachers.</em>
+                </h3>
+
+                <p>
+                    For every lesson.
+                    Every smile.
+                    Every second chance.
+                    Every little push that made us better.
+                </p>
+
+                <button class="celebrate-btn" id="celebrateBtn">
+                    CELEBRATE 🎆
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <footer>
+
+            <div class="footer-logo">
+                ✦ Teachers' Day
+            </div>
+
+            <p>
+                Made with ❤️ and gratitude for every teacher.
+            </p>
+
+            <small>
+                Happy Teachers' Day 🎓
+            </small>
+
+        </footer>
+
+    </main>
+
+
+    <!-- SURPRISE MODAL -->
+    <div id="surpriseModal" class="modal">
+
+        <div class="modal-box">
+
+            <button class="close-modal" id="closeModal">×</button>
+
+            <div class="modal-icon">🌹</div>
+
+            <span>FOR EVERY TEACHER</span>
+
+            <h3>
+                You Are
+                <em>A Difference Maker.</em>
+            </h3>
+
+            <p>
+                Somewhere, someday, a student will remember your words,
+                your kindness, and the confidence you gave them.
+            </p>
+
+            <strong>
+                Happy Teachers' Day ❤️
+            </strong>
+
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+      </html>
