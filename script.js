@@ -1,140 +1,249 @@
 /* =========================================
    TEACHERS' DAY WEBSITE
-   INTERACTIVE JAVASCRIPT
+   FINAL WORKING JAVASCRIPT
 ========================================= */
 
 
-/* ---------- INTRO ---------- */
+/* ================================
+   INTRO SCREEN
+================================ */
 
 const introScreen = document.getElementById("introScreen");
 const mainContent = document.getElementById("mainContent");
 const enterBtn = document.getElementById("enterBtn");
 
-enterBtn.addEventListener("click", () => {
+if (enterBtn) {
 
-    introScreen.classList.add("hide");
+    enterBtn.addEventListener("click", function () {
 
-    setTimeout(() => {
-        introScreen.style.display = "none";
-        mainContent.classList.remove("hidden");
+        if (introScreen) {
+            introScreen.classList.add("hide");
+        }
 
-        startParticles();
-        playMusic();
+        setTimeout(function () {
 
-    }, 900);
+            if (introScreen) {
+                introScreen.style.display = "none";
+            }
 
-});
+            if (mainContent) {
+                mainContent.classList.remove("hidden");
+            }
 
+            startParticles();
 
-/* ---------- MUSIC ---------- */
+        }, 900);
 
-const music = document.getElementById("bgMusic");
-const musicBtn = document.getElementById("musicBtn");
-
-let musicPlaying = false;
-
-function playMusic() {
-
-    music.play()
-        .then(() => {
-
-            musicPlaying = true;
-            musicBtn.classList.add("playing");
-
-        })
-        .catch(() => {
-
-            musicPlaying = false;
-
-        });
+    });
 
 }
 
-musicBtn.addEventListener("click", () => {
 
-    if (musicPlaying) {
+/* ================================
+   MUSIC MENU
+================================ */
 
-        music.pause();
-        musicPlaying = false;
-        musicBtn.classList.remove("playing");
+const musicBtn =
+    document.getElementById("musicBtn");
 
-    } else {
+const musicMenu =
+    document.getElementById("musicMenu");
 
-        music.play()
-            .then(() => {
+const openSong =
+    document.getElementById("openSong");
 
-                musicPlaying = true;
-                musicBtn.classList.add("playing");
+const songLink =
+    document.getElementById("songLink");
 
-            });
+
+/* Open / close music menu */
+
+if (musicBtn && musicMenu) {
+
+    musicBtn.addEventListener("click", function (event) {
+
+        event.stopPropagation();
+
+        musicMenu.classList.toggle("show");
+
+    });
+
+}
+
+
+/* Open selected song */
+
+if (openSong && songLink) {
+
+    openSong.addEventListener("click", function () {
+
+        const link = songLink.value.trim();
+
+        if (link === "") {
+
+            alert(
+                "🎵 Please paste your Spotify or YouTube song link."
+            );
+
+            return;
+
+        }
+
+
+        if (
+            !link.startsWith("https://") &&
+            !link.startsWith("http://")
+        ) {
+
+            alert(
+                "❌ Please enter a valid song link."
+            );
+
+            return;
+
+        }
+
+
+        window.open(
+            link,
+            "_blank",
+            "noopener,noreferrer"
+        );
+
+    });
+
+}
+
+
+/* Close music menu when clicking outside */
+
+document.addEventListener("click", function (event) {
+
+    if (
+        musicMenu &&
+        musicBtn &&
+        !musicMenu.contains(event.target) &&
+        !musicBtn.contains(event.target)
+    ) {
+
+        musicMenu.classList.remove("show");
 
     }
 
 });
 
 
-/* ---------- COUNTDOWN ---------- */
-
-/*
-   Change this date if you want a different countdown.
-*/
+/* ================================
+   COUNTDOWN
+================================ */
 
 const celebrationDate =
     new Date("September 5, 2026 00:00:00").getTime();
 
+
 function updateCountdown() {
 
-    const now = new Date().getTime();
+    const now =
+        new Date().getTime();
 
-    let difference = celebrationDate - now;
+    let difference =
+        celebrationDate - now;
+
 
     if (difference < 0) {
-
         difference = 0;
-
     }
 
+
     const days =
-        Math.floor(difference / (1000 * 60 * 60 * 24));
+        Math.floor(
+            difference /
+            (1000 * 60 * 60 * 24)
+        );
+
 
     const hours =
         Math.floor(
-            (difference % (1000 * 60 * 60 * 24))
-            / (1000 * 60 * 60)
+            (difference %
+                (1000 * 60 * 60 * 24)) /
+            (1000 * 60 * 60)
         );
+
 
     const minutes =
         Math.floor(
-            (difference % (1000 * 60 * 60))
-            / (1000 * 60)
+            (difference %
+                (1000 * 60 * 60)) /
+            (1000 * 60)
         );
+
 
     const seconds =
         Math.floor(
-            (difference % (1000 * 60))
-            / 1000
+            (difference %
+                (1000 * 60)) /
+            1000
         );
 
-    document.getElementById("days").textContent =
-        String(days).padStart(2, "0");
 
-    document.getElementById("hours").textContent =
-        String(hours).padStart(2, "0");
+    const daysElement =
+        document.getElementById("days");
 
-    document.getElementById("minutes").textContent =
-        String(minutes).padStart(2, "0");
+    const hoursElement =
+        document.getElementById("hours");
 
-    document.getElementById("seconds").textContent =
-        String(seconds).padStart(2, "0");
+    const minutesElement =
+        document.getElementById("minutes");
+
+    const secondsElement =
+        document.getElementById("seconds");
+
+
+    if (daysElement) {
+
+        daysElement.textContent =
+            String(days).padStart(2, "0");
+
+    }
+
+
+    if (hoursElement) {
+
+        hoursElement.textContent =
+            String(hours).padStart(2, "0");
+
+    }
+
+
+    if (minutesElement) {
+
+        minutesElement.textContent =
+            String(minutes).padStart(2, "0");
+
+    }
+
+
+    if (secondsElement) {
+
+        secondsElement.textContent =
+            String(seconds).padStart(2, "0");
+
+    }
 
 }
 
+
 updateCountdown();
 
-setInterval(updateCountdown, 1000);
+setInterval(
+    updateCountdown,
+    1000
+);
 
 
-/* ---------- SURPRISE ---------- */
+/* ================================
+   SURPRISE MODAL
+================================ */
 
 const surpriseBtn =
     document.getElementById("surpriseBtn");
@@ -151,80 +260,155 @@ const closeModal =
 
 function openSurprise() {
 
-    surpriseModal.classList.add("show");
+    if (surpriseModal) {
 
-    createConfetti(130);
-
-    playMusic();
-
-}
-
-surpriseBtn.addEventListener("click", openSurprise);
-
-heroSurprise.addEventListener("click", openSurprise);
-
-
-closeModal.addEventListener("click", () => {
-
-    surpriseModal.classList.remove("show");
-
-});
-
-
-surpriseModal.addEventListener("click", (event) => {
-
-    if (event.target === surpriseModal) {
-
-        surpriseModal.classList.remove("show");
+        surpriseModal.classList.add("show");
 
     }
 
-});
+    createConfetti(130);
+
+}
 
 
-/* ---------- CONFETTI ---------- */
+/* Main surprise button */
 
-function createConfetti(amount = 80) {
+if (surpriseBtn) {
 
-    for (let i = 0; i < amount; i++) {
+    surpriseBtn.addEventListener(
+        "click",
+        openSurprise
+    );
+
+}
+
+
+/* Hero surprise button */
+
+if (heroSurprise) {
+
+    heroSurprise.addEventListener(
+        "click",
+        openSurprise
+    );
+
+}
+
+
+/* Close button */
+
+if (closeModal) {
+
+    closeModal.addEventListener(
+        "click",
+        function () {
+
+            if (surpriseModal) {
+
+                surpriseModal.classList.remove("show");
+
+            }
+
+        }
+    );
+
+}
+
+
+/* Click outside modal */
+
+if (surpriseModal) {
+
+    surpriseModal.addEventListener(
+        "click",
+        function (event) {
+
+            if (
+                event.target ===
+                surpriseModal
+            ) {
+
+                surpriseModal.classList.remove(
+                    "show"
+                );
+
+            }
+
+        }
+    );
+
+}
+
+
+/* ================================
+   CONFETTI
+================================ */
+
+function createConfetti(amount) {
+
+    amount = amount || 80;
+
+
+    for (
+        let i = 0;
+        i < amount;
+        i++
+    ) {
 
         const piece =
             document.createElement("div");
 
-        piece.className = "confetti";
+
+        piece.className =
+            "confetti";
+
 
         piece.style.left =
             Math.random() * 100 + "vw";
 
+
         piece.style.animationDelay =
             Math.random() * 1.5 + "s";
 
+
         piece.style.transform =
-            `rotate(${Math.random() * 360}deg)`;
+            "rotate(" +
+            Math.random() * 360 +
+            "deg)";
+
 
         piece.style.opacity =
             Math.random() * .8 + .2;
 
+
         piece.style.width =
             Math.random() * 8 + 5 + "px";
+
 
         piece.style.height =
             Math.random() * 12 + 7 + "px";
 
+
         document.body.appendChild(piece);
 
-        setTimeout(() => {
 
-            piece.remove();
+        setTimeout(
+            function () {
 
-        }, 5000);
+                piece.remove();
+
+            },
+            5000
+        );
 
     }
 
 }
 
 
-/* ---------- APPRECIATION WALL ---------- */
+/* ================================
+   APPRECIATION WALL
+================================ */
 
 const addMessage =
     document.getElementById("addMessage");
@@ -239,85 +423,149 @@ const messageWall =
     document.getElementById("messageWall");
 
 
-addMessage.addEventListener("click", () => {
+if (
+    addMessage &&
+    studentName &&
+    studentMessage &&
+    messageWall
+) {
 
-    const name =
-        studentName.value.trim();
+    addMessage.addEventListener(
+        "click",
+        function () {
 
-    const message =
-        studentMessage.value.trim();
+            const name =
+                studentName.value.trim();
 
-    if (!name || !message) {
+            const message =
+                studentMessage.value.trim();
 
-        alert("Please enter your name and message ❤️");
 
-        return;
+            if (
+                name === "" ||
+                message === ""
+            ) {
 
-    }
+                alert(
+                    "❤️ Please enter your name and message."
+                );
 
-    const note =
-        document.createElement("div");
+                return;
 
-    note.className = "wall-note";
+            }
 
-    note.innerHTML = `
-        <div>💌</div>
-        <p>“${escapeHTML(message)}”</p>
-        <span>— ${escapeHTML(name)}</span>
-    `;
 
-    messageWall.prepend(note);
+            const note =
+                document.createElement("div");
 
-    studentName.value = "";
-    studentMessage.value = "";
 
-    createConfetti(40);
+            note.className =
+                "wall-note";
 
-});
 
+            note.innerHTML = `
+                <div>💌</div>
+
+                <p>
+                    “${escapeHTML(message)}”
+                </p>
+
+                <span>
+                    — ${escapeHTML(name)}
+                </span>
+            `;
+
+
+            messageWall.prepend(note);
+
+
+            studentName.value = "";
+
+            studentMessage.value = "";
+
+
+            createConfetti(40);
+
+        }
+    );
+
+}
+
+
+/* Protect the appreciation wall */
 
 function escapeHTML(text) {
 
     const div =
         document.createElement("div");
 
-    div.textContent = text;
+    div.textContent =
+        text;
 
     return div.innerHTML;
 
 }
 
 
-/* ---------- FINAL CELEBRATION ---------- */
+/* ================================
+   FINAL CELEBRATION
+================================ */
 
 const celebrateBtn =
     document.getElementById("celebrateBtn");
 
-celebrateBtn.addEventListener("click", () => {
 
-    createConfetti(250);
+if (celebrateBtn) {
 
-    playMusic();
+    celebrateBtn.addEventListener(
+        "click",
+        function () {
 
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
+            createConfetti(250);
 
-});
+            setTimeout(
+                function () {
+
+                    alert(
+                        "🎓❤️ HAPPY TEACHERS' DAY! ❤️🎓\n\nThank you to every teacher who makes a difference!"
+                    );
+
+                },
+                500
+            );
+
+        }
+    );
+
+}
 
 
-/* ---------- PARTICLES ---------- */
+/* ================================
+   PARTICLE BACKGROUND
+================================ */
 
 const canvas =
     document.getElementById("particles");
 
-const ctx =
-    canvas.getContext("2d");
+let ctx = null;
 
 let particles = [];
 
+
+if (canvas) {
+
+    ctx =
+        canvas.getContext("2d");
+
+}
+
+
 function resizeCanvas() {
+
+    if (!canvas) {
+        return;
+    }
+
 
     canvas.width =
         window.innerWidth;
@@ -327,10 +575,12 @@ function resizeCanvas() {
 
 }
 
+
 window.addEventListener(
     "resize",
     resizeCanvas
 );
+
 
 resizeCanvas();
 
@@ -339,11 +589,16 @@ function createParticle() {
 
     return {
 
-        x: Math.random() * canvas.width,
+        x:
+            Math.random() *
+            canvas.width,
 
-        y: Math.random() * canvas.height,
+        y:
+            Math.random() *
+            canvas.height,
 
-        size: Math.random() * 1.8 + .5,
+        size:
+            Math.random() * 1.8 + .5,
 
         speed:
             Math.random() * .35 + .08,
@@ -356,7 +611,13 @@ function createParticle() {
 }
 
 
-for (let i = 0; i < 110; i++) {
+/* Create particles */
+
+for (
+    let i = 0;
+    i < 110;
+    i++
+) {
 
     particles.push(
         createParticle()
@@ -365,7 +626,14 @@ for (let i = 0; i < 110; i++) {
 }
 
 
+/* Draw particles */
+
 function drawParticles() {
+
+    if (!canvas || !ctx) {
+        return;
+    }
+
 
     ctx.clearRect(
         0,
@@ -374,36 +642,48 @@ function drawParticles() {
         canvas.height
     );
 
-    particles.forEach(p => {
 
-        ctx.beginPath();
+    particles.forEach(
+        function (p) {
 
-        ctx.arc(
-            p.x,
-            p.y,
-            p.size,
-            0,
-            Math.PI * 2
-        );
+            ctx.beginPath();
 
-        ctx.fillStyle =
-            `rgba(232,201,130,${p.opacity})`;
 
-        ctx.fill();
+            ctx.arc(
+                p.x,
+                p.y,
+                p.size,
+                0,
+                Math.PI * 2
+            );
 
-        p.y -= p.speed;
 
-        if (p.y < -10) {
+            ctx.fillStyle =
+                "rgba(232,201,130," +
+                p.opacity +
+                ")";
 
-            p.y =
-                canvas.height + 10;
 
-            p.x =
-                Math.random() * canvas.width;
+            ctx.fill();
+
+
+            p.y -= p.speed;
+
+
+            if (p.y < -10) {
+
+                p.y =
+                    canvas.height + 10;
+
+                p.x =
+                    Math.random() *
+                    canvas.width;
+
+            }
 
         }
+    );
 
-    });
 
     requestAnimationFrame(
         drawParticles
@@ -411,58 +691,112 @@ function drawParticles() {
 
 }
 
+
+/* Start particles */
+
 function startParticles() {
 
-    drawParticles();
+    if (
+        canvas &&
+        ctx
+    ) {
+
+        drawParticles();
+
+    }
 
 }
 
 
-/* ---------- MOUSE GLOW ---------- */
-
-let mouseX = 0;
-let mouseY = 0;
+/* ================================
+   MOUSE GLOW
+================================ */
 
 window.addEventListener(
     "mousemove",
-    event => {
-
-        mouseX = event.clientX;
-        mouseY = event.clientY;
+    function (event) {
 
         document.documentElement.style.setProperty(
             "--mouse-x",
-            mouseX + "px"
+            event.clientX + "px"
         );
+
 
         document.documentElement.style.setProperty(
             "--mouse-y",
-            mouseY + "px"
+            event.clientY + "px"
         );
 
     }
 );
 
 
-/* ---------- EASTER EGG ---------- */
+/* ================================
+   LOGO EASTER EGG
+================================ */
+
+const logo =
+    document.querySelector(".logo");
 
 let clickCount = 0;
 
-document.querySelector(".logo")
-    .addEventListener("click", () => {
 
-        clickCount++;
+if (logo) {
 
-        if (clickCount === 5) {
+    logo.addEventListener(
+        "click",
+        function () {
 
-            createConfetti(180);
+            clickCount++;
 
-            alert(
-                "🌟 Teachers make the world brighter. Happy Teachers' Day! ❤️"
+
+            if (clickCount >= 5) {
+
+                createConfetti(180);
+
+
+                alert(
+                    "🌟 Teachers make the world brighter! 🌟\n\nHappy Teachers' Day ❤️"
+                );
+
+
+                clickCount = 0;
+
+            }
+
+        }
+    );
+
+}
+
+
+/* ================================
+   ESCAPE KEY
+================================ */
+
+document.addEventListener(
+    "keydown",
+    function (event) {
+
+        if (
+            event.key === "Escape" &&
+            surpriseModal
+        ) {
+
+            surpriseModal.classList.remove(
+                "show"
             );
-
-            clickCount = 0;
 
         }
 
-    });
+    }
+);
+
+
+/* ================================
+   PAGE READY
+================================ */
+
+console.log(
+    "🎓 Teachers' Day website loaded successfully!"
+);
