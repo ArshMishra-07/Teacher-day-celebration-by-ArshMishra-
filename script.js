@@ -24,61 +24,49 @@ enterBtn.addEventListener("click", () => {
     }, 900);
 
 });
-/* ---------- MUSIC LINK ---------- */
 
-const musicBtn =
-    document.getElementById("musicBtn");
 
-const musicMenu =
-    document.getElementById("musicMenu");
+/* ---------- MUSIC ---------- */
 
-const songLink =
-    document.getElementById("songLink");
+const music = document.getElementById("bgMusic");
+const musicBtn = document.getElementById("musicBtn");
 
-const openSong =
-    document.getElementById("openSong");
+let musicPlaying = false;
 
+function playMusic() {
+
+    music.play()
+        .then(() => {
+
+            musicPlaying = true;
+            musicBtn.classList.add("playing");
+
+        })
+        .catch(() => {
+
+            musicPlaying = false;
+
+        });
+
+}
 
 musicBtn.addEventListener("click", () => {
 
-    musicMenu.classList.toggle("show");
+    if (musicPlaying) {
 
-});
+        music.pause();
+        musicPlaying = false;
+        musicBtn.classList.remove("playing");
 
+    } else {
 
-openSong.addEventListener("click", () => {
+        music.play()
+            .then(() => {
 
-    const link =
-        songLink.value.trim();
+                musicPlaying = true;
+                musicBtn.classList.add("playing");
 
-    if (!link) {
-
-        alert("Please paste a song link 🎵");
-
-        return;
-
-    }
-
-    try {
-
-        const url = new URL(link);
-
-        if (
-            url.protocol !== "https:" &&
-            url.protocol !== "http:"
-        ) {
-            throw new Error();
-        }
-
-        window.open(
-            url.href,
-            "_blank",
-            "noopener,noreferrer"
-        );
-
-    } catch {
-
-        alert("Please enter a valid song link 🔗");
+            });
 
     }
 
