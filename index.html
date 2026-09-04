@@ -19,65 +19,30 @@
     <!-- PARTICLE BACKGROUND -->
     <canvas id="particles"></canvas>
 
-/* ---------- MUSIC LINK ---------- */
+/* 
+    <div class="music-control">
+    <button class="music-btn" id="musicBtn" type="button">
+        🎵
+    </button>
 
-const musicBtn =
-    document.getElementById("musicBtn");
+    <div class="music-menu" id="musicMenu">
 
-const musicMenu =
-    document.getElementById("musicMenu");
+        <div class="music-title">
+            🎶 Choose Your Song
+        </div>
 
-const songLink =
-    document.getElementById("songLink");
+        <input
+            type="url"
+            id="songLink"
+            placeholder="Paste Spotify / YouTube link"
+        >
 
-const openSong =
-    document.getElementById("openSong");
+        <button id="openSong" type="button">
+            🎵 Open Song
+        </button>
 
-
-musicBtn.addEventListener("click", () => {
-
-    musicMenu.classList.toggle("show");
-
-});
-
-
-openSong.addEventListener("click", () => {
-
-    const link =
-        songLink.value.trim();
-
-    if (!link) {
-
-        alert("Please paste a song link 🎵");
-
-        return;
-
-    }
-
-    try {
-
-        const url = new URL(link);
-
-        if (
-            url.protocol !== "https:" &&
-            url.protocol !== "http:"
-        ) {
-            throw new Error();
-        }
-
-        window.open(
-            url.href,
-            "_blank",
-            "noopener,noreferrer"
-        );
-
-    } catch {
-
-        alert("Please enter a valid song link 🔗");
-
-    }
-
-});
+    </div>
+    </div>
 
     <!-- OPENING SCREEN -->
     <div id="introScreen" class="intro-screen">
