@@ -23,10 +23,29 @@
     <audio id="bgMusic" loop>
         <source src="music.mp3" type="audio/mpeg">
     </audio>
-
-    <button class="music-btn" id="musicBtn" aria-label="Music">
+    <div class="music-control">
+    <button class="music-btn" id="musicBtn" aria-label="Open Music">
         🎵
     </button>
+
+    <div class="music-menu" id="musicMenu">
+        <div class="music-title">🎶 Choose Your Song</div>
+
+        <input
+            type="url"
+            id="songLink"
+            placeholder="Paste Spotify / YouTube link..."
+        >
+
+        <button id="openSong">
+            🎵 Open Song
+        </button>
+
+        <p>
+            Paste any song link and open it instantly.
+        </p>
+    </div>
+    </div>
 
     <!-- OPENING SCREEN -->
     <div id="introScreen" class="intro-screen">
